@@ -7,7 +7,7 @@
 
 #ifndef STASSID
 #define STASSID "ATL-2G"
-#define STAPSK  "Logan182"
+#define STAPSK  ""
 #endif
 class Node
 {
@@ -36,17 +36,14 @@ Node *root;
 const char* ssid = STASSID;
 const char* password = STAPSK;
 
-
 Node* insert(Node *head,uint16_t data)
 {
    Node* p=new Node(data);
    if(head==NULL){
-       head=p;  
-
+       head=p;
    }
    else if(head->next==NULL){
        head->next=p;
-
    }
    else{
        Node *start=head;
