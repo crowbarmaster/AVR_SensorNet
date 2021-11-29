@@ -4,23 +4,23 @@
 #define MY_RADIO_RF24
 #define MY_RF24_CS_PIN 5
 #define MY_SIGNING_SOFT 
-#define MY_PARENT_NODE_ID 0
-#define MY_SIGNING_NODE_WHITELISTING {{.nodeId = MY_PARENT_NODE_ID,.serial = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF}}}
+#define KID_NODE_ID 5
+#define MY_SIGNING_NODE_WHITELISTING {{.nodeId = KID_NODE_ID,,.serial = {0xD3,0x20,0x23,0xD6,0xC6,0x18,0xA4,0xFC,0x24}}}
 #define MY_SIGNING_REQUEST_SIGNATURES 
 #define MY_SIGNING_SOFT_RANDOMSEED_PIN 15
 #define MY_GATEWAY_ESP8266
-#define MY_WIFI_SSID "ssid"
-#define MY_WIFI_PASSWORD "pw"
+#define MY_WIFI_SSID "ATL-2G"
+#define MY_WIFI_PASSWORD "Logan182"
 #define MY_HOSTNAME "ESP8266_GW"
 #define MY_IP_ADDRESS 10,0,10,254
 #define MY_PORT 5003
 #define MY_GATEWAY_MAX_CLIENTS 2
 #define MY_DEFAULT_TX_LED_PIN  16  // the PCB, on board LED
-#define KidsHeatId 0
+#define LoganHeatId 0
 
 #include <MySensors.h>
 
-MyMessage HeatMsg(KidsHeatId, V_LOCK_STATUS);
+MyMessage HeatMsg(LoganHeatId, V_LOCK_STATUS);
 
 void setup()
 {
@@ -36,7 +36,7 @@ void setup()
 
 void presentation()
 {
-	present(KidsHeatId, S_LOCK);
+	present(LoganHeatId, S_LOCK);
 }
 
 void loop()
@@ -62,10 +62,10 @@ void receive(const MyMessage &message) {
   }
   if (message.sensor == 1) {
     float temp = message.getInt();
-    Serial.println("Tort's tank temp reported: " + String(temp) + " *F");
+    Serial.println("Oreo's tank temp reported: " + String(temp) + " *F");
   }
   if (message.sensor == 2) {
     float humd = message.getInt();
-    Serial.println("Tort's tank humidity reported: " + String(humd) + " %");
+    Serial.println("Oreo's tank humidity reported: " + String(humd) + " %");
   }
 }
